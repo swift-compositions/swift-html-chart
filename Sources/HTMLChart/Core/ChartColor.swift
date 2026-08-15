@@ -35,7 +35,12 @@ extension ChartColor {
     }
 
     /// Create an HSLA color with alpha
-    public static func hsla(_ hue: Int, _ saturation: Int, _ lightness: Int, _ alpha: Double)
+    public static func hsla(
+        _ hue: Int,
+        _ saturation: Int,
+        _ lightness: Int,
+        _ alpha: Double
+    )
         -> Self
     {
         Self("hsla(\(hue), \(saturation)%, \(lightness)%, \(alpha))")
