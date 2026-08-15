@@ -25,7 +25,6 @@ public struct ChartData: Sendable, Codable {
     // swiftlint:enable no_any_protocol_existential
 
     // Signature forced by external protocol Decodable (untyped `throws`).
-    // swiftlint:disable:next typed_throws_required
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.labels = try container.decodeIfPresent([String].self, forKey: .labels)
@@ -43,7 +42,6 @@ extension ChartData {
     }
 
     // Signature forced by external protocol Encodable (untyped `throws`).
-    // swiftlint:disable:next typed_throws_required
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(labels, forKey: .labels)

@@ -42,7 +42,6 @@ public enum ChartValue: Sendable, Codable {
     case null
 
     // Signature forced by external protocol Decodable (untyped `throws`).
-    // swiftlint:disable:next typed_throws_required
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
 
@@ -78,7 +77,6 @@ public enum ChartValue: Sendable, Codable {
 
 extension ChartValue {
     // Signature forced by external protocol Encodable (untyped `throws`).
-    // swiftlint:disable:next typed_throws_required
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
