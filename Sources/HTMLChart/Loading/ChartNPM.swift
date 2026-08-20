@@ -4,15 +4,15 @@ import HTML
 /// NPM/self-hosted Chart.js loader
 public struct ChartNPM: ChartLoader {
     public let path: String
-    public let `defer`: Defer
-    public let async: Async
-    public let type: ScriptType?
+    public let `defer`: HTML.Defer.Attribute
+    public let async: HTML.Async.Attribute
+    public let type: HTML.Script.`Type`.Attribute?
 
     public init(
         path: String,
-        defer: Defer = true,
-        async: Async = false,
-        type: ScriptType? = nil
+        defer: HTML.Defer.Attribute = true,
+        async: HTML.Async.Attribute = false,
+        type: HTML.Script.`Type`.Attribute? = nil
     ) {
         self.path = path
         self.defer = `defer`
@@ -39,13 +39,13 @@ extension ChartNPM {
 /// ES Module loader for Chart.js
 public struct ChartESM: ChartLoader {
     public let url: String
-    public let integrity: Integrity?
-    public let crossorigin: Crossorigin?
+    public let integrity: HTML.Integrity.Attribute?
+    public let crossorigin: HTML.Crossorigin.Attribute?
 
     public init(
         url: String = "https://cdn.jsdelivr.net/npm/chart.js@4/+esm",
-        integrity: Integrity? = nil,
-        crossorigin: Crossorigin? = "anonymous"
+        integrity: HTML.Integrity.Attribute? = nil,
+        crossorigin: HTML.Crossorigin.Attribute? = "anonymous"
     ) {
         self.url = url
         self.integrity = integrity

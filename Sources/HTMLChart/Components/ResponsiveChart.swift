@@ -6,13 +6,13 @@ public struct ResponsiveChart: HTML.View {
     public let chart: Chart
     public let aspectRatio: Double
     public let maxWidth: W3C_CSS_Values.Length?
-    public let containerClass: Class?
+    public let containerClass: HTML.Class.Attribute?
 
     public init(
         chart: Chart,
         aspectRatio: Double = 2.0,
         maxWidth: W3C_CSS_Values.Length? = nil,
-        containerClass: Class? = nil
+        containerClass: HTML.Class.Attribute? = nil
     ) {
         self.chart = chart
         self.aspectRatio = aspectRatio
@@ -26,7 +26,7 @@ public struct ResponsiveChart: HTML.View {
         configuration: ChartConfiguration,
         aspectRatio: Double = 2.0,
         maxWidth: W3C_CSS_Values.Length? = nil,
-        containerClass: Class? = nil
+        containerClass: HTML.Class.Attribute? = nil
     ) {
         self.chart = Chart(
             id: id,

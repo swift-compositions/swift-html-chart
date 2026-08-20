@@ -5,19 +5,19 @@ import HTML
 public struct ChartCDN: ChartLoader {
     public let version: String
     public let minified: Bool
-    public let integrity: Integrity?
-    public let crossorigin: Crossorigin?
-    public let `defer`: Defer
-    public let async: Async
+    public let integrity: HTML.Integrity.Attribute?
+    public let crossorigin: HTML.Crossorigin.Attribute?
+    public let `defer`: HTML.Defer.Attribute
+    public let async: HTML.Async.Attribute
     public let includePlugins: [CDNPlugin]
 
     public init(
         version: String = "4.4.0",
         minified: Bool = true,
-        integrity: Integrity? = nil,
-        crossorigin: Crossorigin? = "anonymous",
-        defer: Defer = true,
-        async: Async = false,
+        integrity: HTML.Integrity.Attribute? = nil,
+        crossorigin: HTML.Crossorigin.Attribute? = "anonymous",
+        defer: HTML.Defer.Attribute = true,
+        async: HTML.Async.Attribute = false,
         includePlugins: [CDNPlugin] = []
     ) {
         self.version = version
@@ -59,7 +59,7 @@ extension ChartCDN {
         }
     }
 
-    private var chartJsUrl: Src {
+    private var chartJsUrl: HTML.Src.Attribute {
         let filename = minified ? "chart.umd.min.js" : "chart.umd.js"
         return .init("https://cdn.jsdelivr.net/npm/chart.js@\(version)/dist/\(filename)")
     }
@@ -75,7 +75,7 @@ public enum CDNPlugin: String, Sendable {
 }
 
 extension CDNPlugin {
-    func cdnUrl(version: String) -> Src {
+    func cdnUrl(version: String) -> HTML.Src.Attribute {
         switch self {
         case .datalabels:
             return .init(

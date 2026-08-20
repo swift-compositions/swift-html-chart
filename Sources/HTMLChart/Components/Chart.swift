@@ -7,7 +7,7 @@ public struct Chart: HTML.View {
     public let configuration: ChartConfiguration
     public let width: W3C_CSS_BoxModel.Width?
     public let height: W3C_CSS_BoxModel.Height?
-    public let containerClass: Class?
+    public let containerClass: HTML.Class.Attribute?
     public let responsive: Bool
     public let storeGlobally: Bool
 
@@ -16,7 +16,7 @@ public struct Chart: HTML.View {
         configuration: ChartConfiguration,
         width: W3C_CSS_BoxModel.Width? = nil,
         height: W3C_CSS_BoxModel.Height? = nil,
-        containerClass: Class? = nil,
+        containerClass: HTML.Class.Attribute? = nil,
         responsive: Bool = true,
         storeGlobally: Bool = false
     ) {
