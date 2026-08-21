@@ -1,6 +1,5 @@
 import Foundation
 
-/// Title plugin configuration
 public struct TitleOptions: Sendable {
     public let display: Bool?
     public let text: TitleText?
@@ -31,7 +30,6 @@ public struct TitleOptions: Sendable {
         self.align = align
     }
 
-    /// Convenience initializer for simple string title
     public init(_ text: String) {
         self.init(display: true, text: .single(text))
     }
@@ -76,13 +74,11 @@ extension TitleOptions {
     }
 }
 
-/// Title text that can be single or multi-line
 public enum TitleText: Sendable {
     case single(String)
     case multi([String])
 }
 
-/// Title position options
 public enum TitlePosition: String, Sendable {
     case top
     case left

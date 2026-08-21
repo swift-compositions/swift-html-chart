@@ -1,7 +1,6 @@
 import Foundation
 import HTML
 
-/// NPM/self-hosted Chart.js loader
 public struct ChartNPM: ChartLoader {
     public let path: String
     public let `defer`: HTML.Defer.Attribute
@@ -36,7 +35,6 @@ extension ChartNPM {
     }
 }
 
-/// ES Module loader for Chart.js
 public struct ChartESM: ChartLoader {
     public let url: String
     public let integrity: HTML.Integrity.Attribute?

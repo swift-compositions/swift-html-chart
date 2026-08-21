@@ -1,6 +1,5 @@
 import Foundation
 
-/// Dataset specifically for pie charts
 public struct PieDataset: ChartDataset {
     public let label: String
     public let data: [ChartValue]
@@ -10,7 +9,6 @@ public struct PieDataset: ChartDataset {
     public let hidden: Bool
     public let order: Int?
 
-    // Pie-specific properties
     public let rotation: Double?
     public let circumference: Double?
     public let borderAlign: BorderAlign?
@@ -20,7 +18,6 @@ public struct PieDataset: ChartDataset {
     public let spacing: Double?
     public let weight: Double?
 
-    // Multiple colors for pie segments
     public let backgroundColors: [ChartColor]?
     public let borderColors: [ChartColor]?
     public let hoverBackgroundColors: [ChartColor]?
@@ -68,7 +65,6 @@ public struct PieDataset: ChartDataset {
         self.hoverBorderColors = hoverBorderColors
     }
 
-    /// Convenience initializer with automatic colors
     public init(
         data: [Double],
         labels: [String]? = nil
@@ -90,7 +86,6 @@ extension PieDataset {
             "hidden": hidden,
         ]
 
-        // Use array of colors if provided, otherwise single color
         if let backgroundColors, !backgroundColors.isEmpty {
             dict["backgroundColor"] = backgroundColors.map { $0.value }
         } else if let backgroundColor {
@@ -144,7 +139,6 @@ extension PieDataset {
     }
 }
 
-/// Dataset specifically for doughnut charts (extends pie with cutout)
 public struct DoughnutDataset: ChartDataset {
     private let pieDataset: PieDataset
     public let cutout: CutoutValue?
@@ -197,7 +191,7 @@ public struct DoughnutDataset: ChartDataset {
 }
 
 extension DoughnutDataset {
-    // Forwarding protocol requirements
+
     public var label: String { pieDataset.label }
     public var data: [ChartValue] { pieDataset.data }
     public var backgroundColor: ChartColor? { pieDataset.backgroundColor }
@@ -215,13 +209,11 @@ extension DoughnutDataset {
     }
 }
 
-/// Border alignment for pie/doughnut charts
 public enum BorderAlign: String, Sendable {
     case center
     case inner
 }
 
-/// Cutout value for doughnut charts
 public enum CutoutValue: Sendable {
     case pixels(Double)
     case percentage(Double)
@@ -239,7 +231,6 @@ extension CutoutValue {
     }
 }
 
-// MARK: - Default Color Palette
 extension ChartColor {
     public static let defaultPalette: [ChartColor] = [
         .rgb(255, 99, 132),

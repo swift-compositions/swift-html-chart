@@ -23,7 +23,6 @@ extension Chart {
                 data: data
             )
 
-            // Just ensure it compiles and can be created
             #expect(chart != nil)
         }
 

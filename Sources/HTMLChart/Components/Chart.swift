@@ -1,7 +1,6 @@
 import Foundation
 import HTML
 
-/// Main chart component that renders a Chart.js chart
 public struct Chart: HTML.View {
     public let id: String
     public let configuration: ChartConfiguration
@@ -58,7 +57,6 @@ extension Chart {
     }
 }
 
-/// Convenience chart components for common chart types
 public struct LineChart: HTML.View {
     private let chart: Chart
 

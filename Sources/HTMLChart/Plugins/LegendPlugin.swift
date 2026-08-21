@@ -1,6 +1,5 @@
 import Foundation
 
-/// Legend plugin configuration
 public struct LegendOptions: Sendable {
     public let display: Bool?
     public let position: LegendPosition?
@@ -9,9 +8,9 @@ public struct LegendOptions: Sendable {
     public let maxWidth: Double?
     public let fullSize: Bool?
     public let reverse: Bool?
-    public let onClick: String?  // JavaScript function as string
-    public let onHover: String?  // JavaScript function as string
-    public let onLeave: String?  // JavaScript function as string
+    public let onClick: String?
+    public let onHover: String?
+    public let onLeave: String?
     public let labels: LegendLabelOptions?
     public let title: LegendTitle?
     public let rtl: Bool?
@@ -101,7 +100,6 @@ extension LegendOptions {
     }
 }
 
-/// Legend position options
 public enum LegendPosition: String, Sendable {
     case top
     case left
@@ -110,29 +108,26 @@ public enum LegendPosition: String, Sendable {
     case chartArea
 }
 
-/// Legend alignment options
 public enum LegendAlign: String, Sendable {
     case start
     case center
     case end
 }
 
-/// Text direction for legend
 public enum TextDirection: String, Sendable {
     case ltr
     case rtl
 }
 
-/// Legend label configuration
 public struct LegendLabelOptions: Sendable {
     public let boxWidth: Double?
     public let boxHeight: Double?
     public let color: ChartColor?
     public let font: FontOptions?
     public let padding: Double?
-    public let generateLabels: String?  // JavaScript function as string
-    public let filter: String?  // JavaScript function as string
-    public let sort: String?  // JavaScript function as string
+    public let generateLabels: String?
+    public let filter: String?
+    public let sort: String?
     public let pointStyle: PointStyle?
     public let textAlign: TextAlign?
     public let usePointStyle: Bool?
@@ -224,14 +219,12 @@ extension LegendLabelOptions {
     }
 }
 
-/// Text alignment options
 public enum TextAlign: String, Sendable {
     case left
     case center
     case right
 }
 
-/// Legend title configuration
 public struct LegendTitle: Sendable {
     public let display: Bool?
     public let text: String?

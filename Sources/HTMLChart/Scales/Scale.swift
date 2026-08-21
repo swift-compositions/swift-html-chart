@@ -1,6 +1,5 @@
 import Foundation
 
-/// Protocol for all chart scales
 public protocol Scale: Sendable {
     var type: ScaleType { get }
     var display: Bool? { get }
@@ -23,7 +22,6 @@ public protocol Scale: Sendable {
     func toDictionary() -> [String: Any]
 }
 
-/// Default implementation for common scale properties
 extension Scale {
     public func baseDictionary() -> [String: Any] {
         var dict: [String: Any] = [
@@ -83,7 +81,6 @@ extension Scale {
     }
 }
 
-/// Types of scales available in Chart.js
 public enum ScaleType: String, Sendable {
     case linear
     case logarithmic
@@ -93,7 +90,6 @@ public enum ScaleType: String, Sendable {
     case radialLinear
 }
 
-/// Position of the scale
 public enum ScalePosition: String, Sendable {
     case top
     case left
@@ -103,7 +99,6 @@ public enum ScalePosition: String, Sendable {
     case chartArea
 }
 
-/// Scale title configuration
 public struct ScaleTitle: Sendable {
     public let display: Bool?
     public let text: String?
@@ -156,14 +151,12 @@ extension ScaleTitle {
     }
 }
 
-/// Title alignment options
 public enum TitleAlign: String, Sendable {
     case start
     case center
     case end
 }
 
-/// Configuration for scale ticks
 public struct TickOptions: Sendable {
     public let display: Bool?
     public let color: ChartColor?
@@ -183,8 +176,8 @@ public struct TickOptions: Sendable {
     public let stepSize: Double?
     public let count: Int?
     public let precision: Int?
-    public let callback: String?  // JavaScript function as string
-    public let format: String?  // Number format string
+    public let callback: String?
+    public let format: String?
     public let showLabelBackdrop: Bool?
     public let backdropColor: ChartColor?
     public let backdropPadding: PaddingValue?
@@ -283,13 +276,11 @@ extension TickOptions {
         if let callback {
             dict["callback"] = callback
         }
-        // Add other properties as needed
 
         return dict
     }
 }
 
-/// Major tick configuration
 public struct MajorTickOptions: Sendable {
     public let enabled: Bool?
 
@@ -298,7 +289,6 @@ public struct MajorTickOptions: Sendable {
     }
 }
 
-/// Tick alignment options
 public enum TickAlign: String, Sendable {
     case start
     case center
@@ -306,21 +296,18 @@ public enum TickAlign: String, Sendable {
     case inner
 }
 
-/// Cross alignment for ticks
 public enum CrossAlign: String, Sendable {
     case near
     case center
     case far
 }
 
-/// Source for tick generation
 public enum TickSource: String, Sendable {
     case auto
     case data
     case labels
 }
 
-/// Configuration for grid lines
 public struct GridOptions: Sendable {
     public let display: Bool?
     public let circular: Bool?
@@ -391,7 +378,6 @@ extension GridOptions {
     }
 }
 
-/// Configuration for scale border
 public struct BorderOptions: Sendable {
     public let display: Bool?
     public let color: ChartColor?

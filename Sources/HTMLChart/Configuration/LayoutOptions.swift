@@ -1,6 +1,5 @@
 import Foundation
 
-/// Configuration for chart layout and padding
 public struct LayoutOptions: Sendable {
     public let padding: PaddingValue?
     public let autoPadding: Bool?
@@ -29,7 +28,6 @@ extension LayoutOptions {
     }
 }
 
-/// Padding value that can be uniform or per-side
 public enum PaddingValue: Sendable {
     case uniform(Double)
     case sides(top: Double, right: Double, bottom: Double, left: Double)

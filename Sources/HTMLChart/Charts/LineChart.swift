@@ -1,6 +1,5 @@
 import Foundation
 
-/// Dataset specifically for line charts
 public struct LineDataset: ChartDataset {
     public let label: String
     public let data: [ChartValue]
@@ -10,7 +9,6 @@ public struct LineDataset: ChartDataset {
     public let hidden: Bool
     public let order: Int?
 
-    // Line-specific properties
     public let tension: Double?
     public let fill: ChartFill?
     public let stepped: Bool?
@@ -69,7 +67,6 @@ public struct LineDataset: ChartDataset {
         self.cubicInterpolationMode = cubicInterpolationMode
     }
 
-    /// Convenience initializer for numeric data
     public init(
         label: String,
         data: [Double],
@@ -157,7 +154,6 @@ extension LineDataset {
     }
 }
 
-/// Fill options for line charts
 public enum ChartFill: Sendable {
     case none
     case origin
@@ -203,7 +199,6 @@ extension ChartFill {
     }
 }
 
-/// Point styles available in Chart.js
 public enum PointStyle: String, Sendable, CaseIterable {
     case circle
     case cross
@@ -217,14 +212,11 @@ public enum PointStyle: String, Sendable, CaseIterable {
     case triangle
 }
 
-/// Cubic interpolation modes for line charts
 public enum CubicInterpolationMode: String, Sendable {
     case `default`
     case monotone
 }
 
-/// Segment configuration for styling line segments differently
 public struct SegmentConfiguration: Sendable {
-    // This would contain segment-specific styling
-    // Simplified for this implementation
+
 }

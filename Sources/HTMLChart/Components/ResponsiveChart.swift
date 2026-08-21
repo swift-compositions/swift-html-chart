@@ -1,7 +1,6 @@
 import Foundation
 import HTML
 
-/// A responsive chart container that maintains aspect ratio
 public struct ResponsiveChart: HTML.View {
     public let chart: Chart
     public let aspectRatio: Double
@@ -20,7 +19,6 @@ public struct ResponsiveChart: HTML.View {
         self.containerClass = containerClass
     }
 
-    /// Convenience initializer with configuration
     public init(
         id: String? = nil,
         configuration: ChartConfiguration,

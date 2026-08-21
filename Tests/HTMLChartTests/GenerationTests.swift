@@ -22,15 +22,12 @@ struct GenerationTests {
 
         let html = try String(chart)
 
-        // Check that canvas element is created
         #expect(html.contains("<canvas"))
         #expect(html.contains("id=\"test-chart\""))
 
-        // Check that script element is created
         #expect(html.contains("<script>"))
         #expect(html.contains("new Chart"))
 
-        // Print for debugging
         print("Generated HTML:")
         print(html)
     }
@@ -51,13 +48,11 @@ struct GenerationTests {
 
         let js = config.toJavaScript()
 
-        // Check basic structure
         #expect(js.contains("type: 'line'"))
         #expect(js.contains("labels: ['A', 'B', 'C']"))
         #expect(js.contains("datasets: ["))
         #expect(js.contains("label: 'Test'"))
 
-        // Print for debugging
         print("Generated JavaScript config:")
         print(js)
     }
@@ -83,7 +78,6 @@ struct GenerationTests {
 
         let html = try String(script)
 
-        // Check that initialization function is created
         #expect(html.contains("init_bar-chart"))
         #expect(html.contains("getElementById('bar-chart')"))
         #expect(html.contains("new Chart"))

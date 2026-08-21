@@ -1,6 +1,5 @@
 import Foundation
 
-/// Configuration for how users interact with the chart
 public struct InteractionOptions: Sendable {
     public let mode: InteractionMode?
     public let intersect: Bool?
@@ -41,7 +40,6 @@ extension InteractionOptions {
     }
 }
 
-/// Interaction modes determine which elements are affected by interactions
 public enum InteractionMode: String, Sendable {
     case point
     case nearest
@@ -51,7 +49,6 @@ public enum InteractionMode: String, Sendable {
     case y
 }
 
-/// Which axes to consider for interactions
 public enum InteractionAxis: String, Sendable {
     case x
     case y

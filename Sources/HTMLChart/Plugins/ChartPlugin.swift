@@ -1,6 +1,5 @@
 import Foundation
 
-/// Protocol for Chart.js plugins
 public protocol ChartPlugin: Sendable {
     var id: String { get }
     var enabled: Bool { get }
@@ -9,17 +8,15 @@ public protocol ChartPlugin: Sendable {
     func toDictionary() -> [String: Any]
 }
 
-/// Default implementation for plugins
 extension ChartPlugin {
     public var enabled: Bool { true }
 
     public func toJavaScript() -> String {
-        // Default implementation returns empty object
+
         return "{}"
     }
 }
 
-/// Container for plugin options
 public struct PluginOptions: Sendable {
     public let legend: LegendOptions?
     public let tooltip: TooltipOptions?
@@ -72,7 +69,6 @@ extension PluginOptions {
     }
 }
 
-/// Filler plugin options
 public struct FillerOptions: Sendable {
     public let propagate: Bool?
     public let drawTime: DrawTime?
@@ -101,7 +97,6 @@ extension FillerOptions {
     }
 }
 
-/// Draw time for plugins
 public enum DrawTime: String, Sendable {
     case beforeDraw
     case beforeDatasetsDraw
@@ -111,7 +106,6 @@ public enum DrawTime: String, Sendable {
     case afterDraw
 }
 
-/// Decimation plugin options
 public struct DecimationOptions: Sendable {
     public let enabled: Bool?
     public let algorithm: DecimationAlgorithm?
@@ -152,13 +146,11 @@ extension DecimationOptions {
     }
 }
 
-/// Decimation algorithms
 public enum DecimationAlgorithm: String, Sendable {
     case minMax = "min-max"
     case lttb
 }
 
-/// Subtitle plugin options
 public struct SubtitleOptions: Sendable {
     public let display: Bool?
     public let text: String?

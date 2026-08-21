@@ -1,6 +1,5 @@
 import Foundation
 
-/// Represents the different types of charts available in Chart.js
 public enum ChartType: String, Sendable, CaseIterable, Codable {
     case line
     case bar
@@ -13,7 +12,7 @@ public enum ChartType: String, Sendable, CaseIterable, Codable {
 }
 
 extension ChartType {
-    /// The string value used by Chart.js
+
     public var chartJsType: String {
         switch self {
         case .polarArea:
@@ -24,7 +23,6 @@ extension ChartType {
         }
     }
 
-    /// Whether this chart type supports stacking
     public var supportsStacking: Bool {
         switch self {
         case .line, .bar:
@@ -35,7 +33,6 @@ extension ChartType {
         }
     }
 
-    /// Whether this chart type is radial (circular)
     public var isRadial: Bool {
         switch self {
         case .radar, .polarArea:
@@ -46,7 +43,6 @@ extension ChartType {
         }
     }
 
-    /// Whether this chart type is circular (pie-like)
     public var isCircular: Bool {
         switch self {
         case .doughnut, .pie, .polarArea:

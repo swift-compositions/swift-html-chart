@@ -1,6 +1,5 @@
 import Foundation
 
-/// Category scale for string/category data
 public struct CategoryScale: Scale {
     public let type: ScaleType = .category
     public let display: Bool?
@@ -20,7 +19,6 @@ public struct CategoryScale: Scale {
     public let id: String?
     public let clip: Bool?
 
-    // Category-specific properties
     public let labels: [String]?
 
     public init(

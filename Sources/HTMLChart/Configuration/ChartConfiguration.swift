@@ -1,6 +1,5 @@
 import Foundation
 
-/// Main configuration for a Chart.js chart
 public struct ChartConfiguration: Sendable {
     public let type: ChartType
     public let data: ChartData
@@ -21,7 +20,7 @@ public struct ChartConfiguration: Sendable {
 }
 
 extension ChartConfiguration {
-    /// Generate the JavaScript configuration object for Chart.js
+
     public func toJavaScript() -> String {
         var js = "{\n"
         js += "  type: '\(type.chartJsType)',\n"
@@ -67,7 +66,7 @@ extension ChartConfiguration {
 
             switch value {
             case let str as String:
-                // Check if it's already a JS expression (starts with function, contains =>)
+
                 if str.hasPrefix("function") || str.contains("=>") {
                     js += str
                 } else {
@@ -96,7 +95,6 @@ extension ChartConfiguration {
             js += ",\n"
         }
 
-        // Remove last comma and newline
         if js.hasSuffix(",\n") {
             js.removeLast(2)
             js += "\n"
@@ -126,7 +124,6 @@ extension ChartConfiguration {
     }
 }
 
-// MARK: - Builder Pattern
 extension ChartConfiguration {
     public struct Builder {
         private var type: ChartType

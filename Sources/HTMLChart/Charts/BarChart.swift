@@ -1,6 +1,5 @@
 import Foundation
 
-/// Dataset specifically for bar charts
 public struct BarDataset: ChartDataset {
     public let label: String
     public let data: [ChartValue]
@@ -10,7 +9,6 @@ public struct BarDataset: ChartDataset {
     public let hidden: Bool
     public let order: Int?
 
-    // Bar-specific properties
     public let barPercentage: Double?
     public let categoryPercentage: Double?
     public let barThickness: Double?
@@ -63,7 +61,6 @@ public struct BarDataset: ChartDataset {
         self.base = base
     }
 
-    /// Convenience initializer for numeric data
     public init(
         label: String,
         data: [Double],
@@ -138,7 +135,6 @@ extension BarDataset {
     }
 }
 
-/// Border radius configuration for bars
 public enum BorderRadius: Sendable {
     case uniform(Double)
     case topBottom(top: Double, bottom: Double)
@@ -165,7 +161,6 @@ extension BorderRadius {
     }
 }
 
-/// Which borders to skip when drawing bars
 public enum BorderSkipped: String, Sendable {
     case start
     case end

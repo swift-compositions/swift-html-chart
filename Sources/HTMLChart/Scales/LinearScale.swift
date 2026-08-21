@@ -1,6 +1,5 @@
 import Foundation
 
-/// Linear scale for numeric data
 public struct LinearScale: Scale {
     public let type: ScaleType = .linear
     public let display: Bool?
@@ -20,7 +19,6 @@ public struct LinearScale: Scale {
     public let id: String?
     public let clip: Bool?
 
-    // Linear-specific properties
     public let beginAtZero: Bool?
     public let grace: Grace?
 
@@ -80,7 +78,6 @@ extension LinearScale {
     }
 }
 
-/// Grace value for adding padding to scale range
 public enum Grace: Sendable {
     case pixels(Double)
     case percentage(Double)

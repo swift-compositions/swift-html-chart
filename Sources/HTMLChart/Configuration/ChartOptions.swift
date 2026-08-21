@@ -1,6 +1,5 @@
 import Foundation
 
-/// Comprehensive options for chart configuration
 public struct ChartOptions: Sendable {
     public let responsive: Bool?
     public let maintainAspectRatio: Bool?
@@ -21,9 +20,9 @@ public struct ChartOptions: Sendable {
     public let backgroundColor: ChartColor?
     public let borderColor: ChartColor?
     public let font: FontOptions?
-    public let onHover: String?  // JavaScript function as string
-    public let onClick: String?  // JavaScript function as string
-    public let onResize: String?  // JavaScript function as string
+    public let onHover: String?
+    public let onClick: String?
+    public let onResize: String?
 
     public init(
         responsive: Bool? = true,
@@ -247,13 +246,11 @@ extension ChartOptions {
     }
 }
 
-/// Index axis for charts (x or y)
 public enum IndexAxis: String, Sendable {
     case x
     case y
 }
 
-/// Clip value for chart rendering
 public enum ClipValue: Sendable {
     case auto
     case pixels(Double)
@@ -275,7 +272,6 @@ extension ClipValue {
     }
 }
 
-/// Font options for text elements
 public struct FontOptions: Sendable {
     public let family: String?
     public let size: Double?
@@ -355,9 +351,8 @@ extension FontWeight {
     }
 }
 
-/// Element-specific options
 public struct ElementOptions: Sendable {
-    // Simplified for now - would contain options for point, line, bar, arc elements
+
 }
 
 extension ElementOptions {
@@ -366,9 +361,8 @@ extension ElementOptions {
     }
 }
 
-/// Dataset-specific options
 public struct DatasetOptions: Sendable {
-    // Simplified for now - would contain dataset-specific defaults
+
 }
 
 extension DatasetOptions {

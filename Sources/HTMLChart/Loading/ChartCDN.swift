@@ -1,7 +1,6 @@
 import Foundation
 import HTML
 
-/// CDN-based Chart.js loader
 public struct ChartCDN: ChartLoader {
     public let version: String
     public let minified: Bool
@@ -37,7 +36,7 @@ extension ChartCDN {
 
     public var body: some HTML.View {
         HTML.Group {
-            // Main Chart.js library
+
             script(
                 src: chartJsUrl,
                 async: async,
@@ -47,7 +46,6 @@ extension ChartCDN {
                 crossorigin: crossorigin
             )
 
-            // Additional plugins
             for plugin in includePlugins {
                 script(
                     src: plugin.cdnUrl(version: version),
@@ -65,7 +63,6 @@ extension ChartCDN {
     }
 }
 
-/// Available Chart.js plugins from CDN
 public enum CDNPlugin: String, Sendable {
     case datalabels = "chartjs-plugin-datalabels"
     case zoom = "chartjs-plugin-zoom"

@@ -1,10 +1,9 @@
 import Foundation
 
-/// Represents a data point in a chart
 public struct ChartPoint: Sendable, Codable {
     public let x: ChartValue
     public let y: ChartValue
-    public let r: Double?  // For bubble charts
+    public let r: Double?
 
     public init(x: ChartValue, y: ChartValue, r: Double? = nil) {
         self.x = x
@@ -12,21 +11,18 @@ public struct ChartPoint: Sendable, Codable {
         self.r = r
     }
 
-    /// Convenience initializer for numeric points
     public init(x: Double, y: Double, r: Double? = nil) {
         self.x = .number(x)
         self.y = .number(y)
         self.r = r
     }
 
-    /// Convenience initializer for time series
     public init(date: Date, value: Double, r: Double? = nil) {
         self.x = .date(date)
         self.y = .number(value)
         self.r = r
     }
 
-    /// Convenience initializer for category data
     public init(category: String, value: Double, r: Double? = nil) {
         self.x = .string(category)
         self.y = .number(value)
@@ -34,14 +30,12 @@ public struct ChartPoint: Sendable, Codable {
     }
 }
 
-/// Represents a value that can be used in a chart (number, string, or date)
 public enum ChartValue: Sendable, Codable {
     case number(Double)
     case string(String)
     case date(Date)
     case null
 
-    // Signature forced by external protocol Decodable (untyped `throws`).
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
 
@@ -50,9 +44,6 @@ public enum ChartValue: Sendable, Codable {
             return
         }
 
-        // Cascading decode attempts: try each candidate type in turn and
-        // keep the first that succeeds. Empty catches are intentional —
-        // failure just means "try the next type", not an error to surface.
         do {
             self = .number(try container.decode(Double.self))
             return
@@ -76,7 +67,7 @@ public enum ChartValue: Sendable, Codable {
 }
 
 extension ChartValue {
-    // Signature forced by external protocol Encodable (untyped `throws`).
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
@@ -87,7 +78,7 @@ extension ChartValue {
             try container.encode(value)
 
         case .date(let value):
-            // Format as ISO8601 string for Chart.js
+
             let formatter = ISO8601DateFormatter()
             try container.encode(formatter.string(from: value))
 
@@ -96,7 +87,6 @@ extension ChartValue {
         }
     }
 
-    /// Convert to JavaScript value string
     public var jsValue: String {
         switch self {
         case .number(let value):
@@ -115,7 +105,6 @@ extension ChartValue {
     }
 }
 
-// MARK: - ExpressibleByLiteral Conformances
 extension ChartValue: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: Int) {
         self = .number(Double(value))

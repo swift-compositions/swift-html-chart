@@ -1,7 +1,6 @@
 import Foundation
 import HTML
 
-/// Component that generates the JavaScript to initialize a chart
 public struct ChartScript: HTML.View {
     public let chartId: String
     public let configuration: ChartConfiguration

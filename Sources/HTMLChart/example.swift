@@ -1,10 +1,9 @@
 import Foundation
 
-// Simple example showing how to use the chart components
 public struct ChartExamples {}
 
 extension ChartExamples {
-    // Example: Create a line chart configuration
+
     public static func createLineChartConfig() -> ChartConfiguration {
         let dataset = LineDataset(
             label: "Monthly Sales",
@@ -41,7 +40,6 @@ extension ChartExamples {
         )
     }
 
-    // Example: Create a bar chart configuration
     public static func createBarChartConfig() -> ChartConfiguration {
         let dataset = BarDataset(
             label: "Quarterly Revenue",
@@ -60,7 +58,6 @@ extension ChartExamples {
         )
     }
 
-    // Example: Generate JavaScript for a chart
     public static func generateChartJS() -> String {
         let config = createLineChartConfig()
         return config.toJavaScript()

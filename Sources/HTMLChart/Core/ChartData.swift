@@ -1,36 +1,24 @@
 import Foundation
 
-/// Represents the data structure for a chart
 public struct ChartData: Sendable, Codable {
     public let labels: [String]?
-    // Heterogeneous collection: a chart legitimately mixes concrete dataset kinds
-    // (bar/line/etc.) in one array; no non-existential shape expresses that.
-    // swiftlint:disable:next no_any_protocol_existential
+
     public let datasets: [any ChartDataset]
 
-    // Heterogeneous collection — see `datasets` above.
-    // swiftlint:disable:next no_any_protocol_existential
     public init(labels: [String]? = nil, datasets: [any ChartDataset]) {
         self.labels = labels
         self.datasets = datasets
     }
 
-    // Heterogeneous collection — see `datasets` above.
-    // swiftlint:disable no_any_protocol_existential
-    /// Convenience initializer for single dataset
     public init(labels: [String]? = nil, dataset: any ChartDataset) {
         self.labels = labels
         self.datasets = [dataset]
     }
-    // swiftlint:enable no_any_protocol_existential
 
-    // Signature forced by external protocol Decodable (untyped `throws`).
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.labels = try container.decodeIfPresent([String].self, forKey: .labels)
 
-        // For decoding, we'd need to know the specific dataset types
-        // This is a simplified version
         self.datasets = []
     }
 }
@@ -41,21 +29,18 @@ extension ChartData {
         case datasets
     }
 
-    // Signature forced by external protocol Encodable (untyped `throws`).
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(labels, forKey: .labels)
 
-        // Encode datasets as an array of dictionaries
         var datasetsArray = [[String: Any]]()
         for dataset in datasets {
             datasetsArray.append(dataset.toDictionary())
         }
-        // Note: In production, you'd need proper JSON encoding
+
     }
 }
 
-/// Protocol for all chart datasets
 public protocol ChartDataset: Sendable {
     var label: String { get }
     var data: [ChartValue] { get }
@@ -65,11 +50,9 @@ public protocol ChartDataset: Sendable {
     var hidden: Bool { get }
     var order: Int? { get }
 
-    /// Convert to dictionary for JSON serialization
     func toDictionary() -> [String: Any]
 }
 
-/// Default implementation for common properties
 extension ChartDataset {
     public var hidden: Bool { false }
     public var order: Int? { nil }
@@ -98,7 +81,6 @@ extension ChartDataset {
     }
 }
 
-/// Base implementation for common dataset functionality
 public struct BaseDataset: ChartDataset {
     public let label: String
     public let data: [ChartValue]
@@ -126,7 +108,6 @@ public struct BaseDataset: ChartDataset {
         self.order = order
     }
 
-    /// Convenience initializer for numeric data
     public init(
         label: String,
         data: [Double],

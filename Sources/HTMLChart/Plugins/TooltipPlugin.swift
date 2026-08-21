@@ -1,15 +1,14 @@
 import Foundation
 
-/// Tooltip plugin configuration
 public struct TooltipOptions: Sendable {
     public let enabled: Bool?
-    public let external: String?  // JavaScript function as string
+    public let external: String?
     public let mode: InteractionMode?
     public let intersect: Bool?
     public let position: TooltipPosition?
     public let callbacks: TooltipCallbacks?
-    public let itemSort: String?  // JavaScript function as string
-    public let filter: String?  // JavaScript function as string
+    public let itemSort: String?
+    public let filter: String?
     public let backgroundColor: ChartColor?
     public let titleColor: ChartColor?
     public let titleFont: FontOptions?
@@ -168,19 +167,16 @@ extension TooltipOptions {
         if let borderWidth {
             dict["borderWidth"] = borderWidth
         }
-        // Add other properties as needed
 
         return dict
     }
 }
 
-/// Tooltip position options
 public enum TooltipPosition: String, Sendable {
     case average
     case nearest
 }
 
-/// Tooltip alignment options
 public enum TooltipAlign: String, Sendable {
     case left
     case center
@@ -190,7 +186,6 @@ public enum TooltipAlign: String, Sendable {
     case auto
 }
 
-/// Tooltip callback functions
 public struct TooltipCallbacks: Sendable {
     public let beforeTitle: String?
     public let title: String?

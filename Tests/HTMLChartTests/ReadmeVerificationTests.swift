@@ -8,7 +8,7 @@ struct ReadmeVerificationTests {
 
     @Test
     func `Basic Line Chart from README lines 44-65`() {
-        // Create chart data
+
         let dataset = LineDataset(
             label: "Monthly Sales",
             data: [10, 20, 15, 25, 30],
@@ -20,7 +20,6 @@ struct ReadmeVerificationTests {
             dataset: dataset
         )
 
-        // Create and render chart
         let chart = LineChart(
             id: "sales-chart",
             data: data
@@ -73,7 +72,7 @@ struct ReadmeVerificationTests {
 
     @Test
     func `Chart Configuration with Options from README lines 114-141`() {
-        // Create some dummy chart data
+
         let chartData = ChartData(
             labels: ["A", "B", "C"],
             dataset: LineDataset(
@@ -165,7 +164,7 @@ struct ReadmeVerificationTests {
 
     @Test
     func `Dataset types compilation`() {
-        // Test that all dataset types can be created
+
         let lineDataset = LineDataset(
             label: "Line",
             data: [1, 2, 3],

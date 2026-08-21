@@ -1,6 +1,5 @@
 import Foundation
 
-/// Configuration for chart animations
 public struct AnimationOptions: Sendable {
     public let duration: Int?
     public let easing: AnimationEasing?
@@ -8,8 +7,8 @@ public struct AnimationOptions: Sendable {
     public let loop: Bool?
     public let animateRotate: Bool?
     public let animateScale: Bool?
-    public let onProgress: String?  // JavaScript callback as string
-    public let onComplete: String?  // JavaScript callback as string
+    public let onProgress: String?
+    public let onComplete: String?
 
     public init(
         duration: Int? = 1000,
@@ -33,7 +32,7 @@ public struct AnimationOptions: Sendable {
 }
 
 extension AnimationOptions {
-    /// Create animation options with no animation
+
     public static var none: Self {
         Self(duration: 0)
     }
@@ -70,7 +69,6 @@ extension AnimationOptions {
     }
 }
 
-/// Easing functions for animations
 public enum AnimationEasing: String, Sendable, CaseIterable {
     case linear
     case easeInQuad
