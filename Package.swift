@@ -31,7 +31,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-foundations/swift-html.git", branch: "main")
+        .package(url: "https://github.com/swift-compositions/swift-html.git", branch: "main")
     ],
     targets: [
         .target(
