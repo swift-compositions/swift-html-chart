@@ -2,18 +2,6 @@
 
 import PackageDescription
 
-extension String {
-    static let htmlChart: Self = "HTMLChart"
-}
-
-extension Target.Dependency {
-    static var htmlChart: Self { .target(name: .htmlChart) }
-}
-
-extension Target.Dependency {
-    static var html: Self { .product(name: "HTML", package: "swift-html") }
-}
-
 let package = Package(
     name: "swift-html-chart",
     platforms: [
@@ -26,8 +14,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: .htmlChart,
-            targets: [.htmlChart]
+            name: "HTMLChart",
+            targets: ["HTMLChart"]
         )
     ],
     dependencies: [
@@ -35,21 +23,18 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: .htmlChart,
+            name: "HTMLChart",
             dependencies: [
-                .html
+                .product(name: "HTML", package: "swift-html")
             ]
         ),
         .testTarget(
-            name: .htmlChart.tests,
+            name: "HTMLChart Tests",
             dependencies: [
-                .htmlChart
+                .target(name: "HTMLChart")
             ]
         ),
     ],
     swiftLanguageModes: [.v6]
 )
 
-extension String {
-    var tests: Self { "\(self) Tests" }
-}
