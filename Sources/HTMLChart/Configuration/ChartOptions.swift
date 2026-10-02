@@ -149,7 +149,7 @@ extension ChartOptions {
                 if str.hasPrefix("function") || str.contains("=>") {
                     js += str
                 } else {
-                    js += "'\(str)'"
+                    js += javaScriptQuoted(str)
                 }
 
             case let num as Double:
@@ -192,7 +192,7 @@ extension ChartOptions {
                 if str.hasPrefix("function") || str.contains("=>") {
                     js += str
                 } else {
-                    js += "'\(str)'"
+                    js += javaScriptQuoted(str)
                 }
 
             case let num as Double:
@@ -229,7 +229,7 @@ extension ChartOptions {
     private func arrayValueToJS(_ value: Any) -> String {
         switch value {
         case let str as String:
-            return "'\(str)'"
+            return javaScriptQuoted(str)
 
         case let num as Double:
             return String(num)

@@ -44,7 +44,7 @@ extension ChartConfiguration {
         var js = "{\n"
 
         if let labels = data.labels {
-            js += "    labels: [\(labels.map { "'\($0)'" }.joined(separator: ", "))],\n"
+            js += "    labels: [\(labels.map { javaScriptQuoted($0) }.joined(separator: ", "))],\n"
         }
 
         js += "    datasets: [\n"
@@ -70,7 +70,7 @@ extension ChartConfiguration {
                 if str.hasPrefix("function") || str.contains("=>") {
                     js += str
                 } else {
-                    js += "'\(str)'"
+                    js += javaScriptQuoted(str)
                 }
 
             case let num as Double:
@@ -107,7 +107,7 @@ extension ChartConfiguration {
     private func arrayElementToJS(_ element: Any) -> String {
         switch element {
         case let str as String:
-            return "'\(str)'"
+            return javaScriptQuoted(str)
 
         case let num as Double:
             return String(num)

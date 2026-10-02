@@ -93,11 +93,11 @@ extension ChartValue {
             return String(value)
 
         case .string(let value):
-            return "'\(value)'"
+            return javaScriptQuoted(value)
 
         case .date(let value):
             let formatter = ISO8601DateFormatter()
-            return "'\(formatter.string(from: value))'"
+            return javaScriptQuoted(formatter.string(from: value))
 
         case .null:
             return "null"
