@@ -65,13 +65,13 @@ extension ChartScript {
                     }
                 })();
                 """
-        } else {
-            return """
-                const ctx_\(chartId) = document.getElementById('\(chartId)');
-                if (ctx_\(chartId)) {
-                    \(storeGlobally ? "" : "let ")\(globalVar) = new Chart(ctx_\(chartId).getContext('2d'), \(configJS));
-                }
-                """
         }
+
+        return """
+            const ctx_\(chartId) = document.getElementById('\(chartId)');
+            if (ctx_\(chartId)) {
+                \(storeGlobally ? "" : "let ")\(globalVar) = new Chart(ctx_\(chartId).getContext('2d'), \(configJS));
+            }
+            """
     }
 }
